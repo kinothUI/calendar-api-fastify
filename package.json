@@ -1,0 +1,44 @@
+{
+  "name": "fastify-api-training",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "tap test/**/*.test.js",
+    "start": "fastify start -p 5000 -l info src/app.js",
+    "dev": "fastify start -p 5000 -w -l info -P src/app.js",
+    "db:flush": "yarn sequelize db:migrate:undo:all --config src/config --migrations-path src/migrations",
+    "db:migrate": "yarn sequelize db:migrate --config src/config --migrations-path src/migrations",
+    "db:seed": "yarn sequelize db:seed:all --config src/config --seeders-path src/seeders",
+    "db:reset": "yarn db:flush && yarn db:migrate && yarn db:seed",
+    "prepare:swagger": "node ./node_modules/fastify-swagger/prepare-swagger-ui"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.0.0",
+    "fastify": "^3.0.0",
+    "fastify-autoload": "^3.0.2",
+    "fastify-cli": "^2.5.1",
+    "fastify-cookie": "^4.1.0",
+    "fastify-cors": "^5.0.0",
+    "fastify-helmet": "^5.0.3",
+    "fastify-jwt": "^2.1.3",
+    "fastify-multer": "^2.0.2",
+    "fastify-plugin": "^3.0.0",
+    "fastify-swagger": "^3.5.0",
+    "mysql2": "^2.2.5",
+    "sequelize": "^6.3.5"
+  },
+  "devDependencies": {
+    "fs-extra": "^9.0.1",
+    "moment": "^2.29.1",
+    "sequelize-cli": "^6.2.0",
+    "swagger-ui-dist": "^3.37.2",
+    "tap": "^14.0.0"
+  }
+}
